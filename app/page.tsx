@@ -174,7 +174,7 @@ export default async function LandingPage() {
             { nome: "Cliente Booqly", comentario: "Gostei da praticidade para encontrar horários e confirmar o atendimento.", nota: 5 },
           ]).map((d, i) => (
             <article key={`${d.nome}-${i}`} className="booqly-testimonial">
-              <div className="flex items-center gap-3"><div className="booqly-avatar">{d.nome.split(" ").map((p) => p[0]).slice(0,2).join("").toUpperCase()}</div><div><p className="text-xs font-bold">{d.nome}</p><p className="text-[10px] text-white/45">Cliente Booqly</p></div></div>
+              <div className="flex items-center gap-3"><div className="booqly-avatar">{d.nome.split(" ").map((p: string) => p[0]).slice(0,2).join("").toUpperCase()}</div><div><p className="text-xs font-bold">{d.nome}</p><p className="text-[10px] text-white/45">Cliente Booqly</p></div></div>
               <div className="mt-2 text-[11px] tracking-[2px] text-yellow-400">{"★".repeat(Math.max(1, Math.min(5, d.nota || 5)))}</div>
               <p className="mt-2 text-xs leading-5 text-white/62">“{d.comentario}”</p>
             </article>
