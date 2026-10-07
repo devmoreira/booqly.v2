@@ -1,0 +1,672 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ :root {
+  --brand: #19f58a;
+  --brand-fg: #04110a;
+  --brand-soft: rgba(25,245,138,.12);
+  --font-display: "Space Grotesk", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --paper: #050907;
+  --surface: #0b1410;
+  --surface-2: #0f1b16;
+  --line: rgba(225,255,239,.10);
+  --muted: #8c9b93;
+  --ink-strong: #f2fff7;
+}
+
+[data-theme="verde"] {
+  --brand: #19f58a;
+  --brand-fg: #04110a;
+  --brand-soft: rgba(25,245,138,.12);
+  --paper: #050907;
+  --surface: #0b1410;
+  --surface-2: #0f1b16;
+  --line: rgba(225,255,239,.10);
+  --muted: #8c9b93;
+  --ink-strong: #f2fff7;
+}
+
+
+[data-theme="preto"] {
+  --brand: #19f58a;
+  --brand-fg: #04110a;
+  --brand-soft: rgba(25,245,138,.12);
+  --paper: #030706;
+  --surface: #09110e;
+  --surface-2: #0d1814;
+  --line: rgba(225,255,239,.10);
+  --muted: #87968e;
+  --ink-strong: #f4fff8;
+}
+
+[data-theme="branco"] {
+  --brand: #16a34a;
+  --brand-fg: #ffffff;
+  --brand-soft: #eaf9ef;
+  --paper: #f7f9f8;
+  --surface: #ffffff;
+  --surface-2: #ffffff;
+  --line: #e7ece9;
+  --muted: #6b756f;
+  --ink-strong: #101613;
+}
+
+
+/* ===== Controles de formulário — tema premium =====
+   Garante leitura em toda a plataforma, inclusive em telas que ainda
+   possuem classes antigas como bg-white. Checkboxes e radios ficam fora. */
+:root, [data-theme="verde"] {
+  --input-bg: #0b1410;
+  --input-bg-focus: #0f1c17;
+  --input-border: rgba(225,255,239,.16);
+  --input-text: #f2fff7;
+  --input-placeholder: rgba(242,255,247,.42);
+  --input-option-bg: #0b1410;
+}
+
+[data-theme="preto"] {
+  --input-bg: #09110e;
+  --input-bg-focus: #0d1814;
+  --input-border: rgba(225,255,239,.16);
+  --input-text: #f4fff8;
+  --input-placeholder: rgba(244,255,248,.42);
+  --input-option-bg: #09110e;
+}
+
+[data-theme="branco"] {
+  --input-bg: #ffffff;
+  --input-bg-focus: #ffffff;
+  --input-border: #d7e1db;
+  --input-text: #101613;
+  --input-placeholder: rgba(16,22,19,.48);
+  --input-option-bg: #ffffff;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select {
+  background-color: var(--input-bg) !important;
+  color: var(--input-text) !important;
+  border-color: var(--input-border) !important;
+  -webkit-text-fill-color: var(--input-text);
+}
+
+input:not([type="checkbox"]):not([type="radio"])::placeholder,
+textarea::placeholder {
+  color: var(--input-placeholder) !important;
+  -webkit-text-fill-color: var(--input-placeholder);
+  opacity: 1;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):focus,
+textarea:focus,
+select:focus {
+  background-color: var(--input-bg-focus) !important;
+  color: var(--input-text) !important;
+  border-color: rgba(25,245,138,.55) !important;
+  -webkit-text-fill-color: var(--input-text);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(25,245,138,.08);
+}
+
+select option,
+select optgroup {
+  background: var(--input-option-bg);
+  color: var(--input-text);
+}
+
+[data-theme="verde"], [data-theme="preto"] {
+  color-scheme: dark;
+}
+[data-theme="branco"] {
+  color-scheme: light;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: var(--input-text) !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--input-bg) inset !important;
+  box-shadow: 0 0 0 1000px var(--input-bg) inset !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink-strong);
+  font-family: var(--font-sans);
+}
+
+/* Identidade visual Booqly — moderno e premium */
+.booqly-app {
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(90deg, rgba(5,9,7,.98) 0%, rgba(5,9,7,.96) 54%, rgba(5,9,7,.82) 100%),
+    url('/backgrounds/booqly-app-bg.jpg') right top / 720px auto no-repeat,
+    radial-gradient(circle at 85% 0%, rgba(25,245,138,.10), transparent 28rem),
+    radial-gradient(circle at 15% 100%, rgba(25,245,138,.045), transparent 24rem),
+    var(--paper);
+}
+.booqly-sidebar {
+  background: rgba(7,14,11,.92);
+  border-color: var(--line);
+  box-shadow: 12px 0 40px rgba(0,0,0,.18);
+}
+.booqly-topbar {
+  background: rgba(5,9,7,.78);
+  border-color: var(--line);
+  backdrop-filter: blur(18px);
+}
+.booqly-content { min-height: calc(100vh - 76px); }
+.booqly-nav-item {
+  display: flex; align-items: center; gap: .7rem; width: 100%; border-radius: .85rem;
+  padding: .72rem .82rem; color: rgba(242,255,247,.60); font-size: .875rem; font-weight: 500;
+  transition: background .18s ease, color .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+.booqly-nav-item:hover { background: rgba(255,255,255,.045); color: var(--ink-strong); transform: translateX(2px); }
+.booqly-nav-item.is-active {
+  background: linear-gradient(90deg, rgba(25,245,138,.16), rgba(25,245,138,.055));
+  color: var(--brand); font-weight: 650; box-shadow: inset 3px 0 0 var(--brand), 0 8px 24px rgba(25,245,138,.06);
+}
+.booqly-avatar {
+  display: inline-flex; height: 38px; width: 38px; align-items: center; justify-content: center; border-radius: 999px;
+  background: rgba(25,245,138,.12); color: var(--brand); font-weight: 700; border: 1px solid rgba(25,245,138,.20);
+}
+.booqly-search {
+  height: 40px; border: 1px solid var(--line); border-radius: .8rem; background: rgba(255,255,255,.035);
+  color: var(--ink-strong); outline: none; font-size: .875rem; transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.booqly-search::placeholder { color: rgba(242,255,247,.35); }
+.booqly-search:focus { background: rgba(255,255,255,.055); border-color: rgba(25,245,138,.48); box-shadow: 0 0 0 4px rgba(25,245,138,.08); }
+.booqly-content > div > section, .booqly-content .rounded-xl2, .booqly-content .rounded-lg.border, .booqly-content form.rounded-lg.border {
+  border-color: var(--line);
+}
+.booqly-content input, .booqly-content select, .booqly-content textarea {
+  border-color: rgba(225,255,239,.12); border-radius: .75rem; background: var(--surface); color: var(--ink-strong);
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.booqly-content input:focus, .booqly-content select:focus, .booqly-content textarea:focus {
+  outline: none; border-color: rgba(25,245,138,.5); box-shadow: 0 0 0 4px rgba(25,245,138,.08);
+}
+.booqly-content button.bg-brand, .booqly-content a.bg-brand {
+  border-radius: .75rem; box-shadow: 0 8px 24px rgba(25,245,138,.12);
+  transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+}
+.booqly-content button.bg-brand:hover, .booqly-content a.bg-brand:hover { transform: translateY(-1px); box-shadow: 0 12px 30px rgba(25,245,138,.18); }
+.booqly-client-header { border-color: var(--line); box-shadow: 0 1px 18px rgba(0,0,0,.20); }
+
+/* Superfícies e mensagens para o tema premium */
+.bg-red-50 { background: rgba(239,68,68,.11) !important; }
+.bg-red-100 { background: rgba(239,68,68,.16) !important; }
+.bg-amber-50 { background: rgba(245,158,11,.11) !important; }
+.bg-amber-100 { background: rgba(245,158,11,.16) !important; }
+.border-red-200, .border-amber-200, .border-amber-300 { border-color: rgba(255,190,70,.24) !important; }
+.text-red-700, .text-red-600 { color: #ff8f8f !important; }
+.text-amber-800 { color: #ffd27a !important; }
+
+/* Cards gerais ficam mais sofisticados sem alterar a lógica das páginas. */
+.booqly-app .shadow-sm, .booqly-app .shadow-md, .booqly-app .shadow-lg { box-shadow: 0 18px 50px rgba(0,0,0,.16); }
+
+/* Pulso de disponibilidade */
+.slot-pulse { position: relative; }
+.slot-pulse::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: var(--brand);
+  opacity: .35;
+  animation: pulse 1.8s ease-out infinite;
+}
+@keyframes pulse { 0% { transform: scale(.8); opacity: .35; } 70% { transform: scale(1.8); opacity: 0; } 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .slot-pulse::before { animation: none; display: none; } }
+
+.titulo-revelado { display: inline-block; animation: revelar-texto 2.1s ease-out, desfocar-texto 2.1s ease-out; animation-fill-mode: both; }
+@keyframes revelar-texto { 0% { clip-path: inset(0 100% 0 0); } 40% { clip-path: inset(0 100% 0 0); } 100% { clip-path: inset(0 0% 0 0); } }
+@keyframes desfocar-texto { 0% { filter: blur(5px); } 40% { filter: blur(5px); } 100% { filter: blur(0); } }
+@media (prefers-reduced-motion: reduce) { .titulo-revelado { animation: none; } }
+
+@media (max-width: 767px) {
+  .booqly-content { min-height: calc(100vh - 65px); }
+  .booqly-content > div { max-width: 100%; }
+}
+
+/* Tema premium também para páginas públicas, cliente e administração. */
+body {
+  background: var(--paper);
+  color: var(--ink-strong);
+}
+[data-theme="verde"] .bg-surface, [data-theme="preto"] .bg-surface { color: var(--ink-strong); }
+[data-theme="verde"] a:hover, [data-theme="preto"] a:hover { transition: color .18s ease, opacity .18s ease; }
+
+@media (max-width: 767px) {
+  .booqly-content { min-height: calc(100vh - 65px); }
+  .booqly-content > div { max-width: 100%; }
+}
+
+/* Fundos fotográficos da prévia Moderna + Premium, mantendo a mesma direção visual aprovada. */
+.booqly-landing-hero { position: relative; overflow: hidden; isolation: isolate; }
+.booqly-landing-hero::after { content: ""; position: absolute; inset: 0 0 0 42%; z-index: -1; background: linear-gradient(90deg, var(--paper) 0%, rgba(5,9,7,.78) 18%, rgba(5,9,7,.18) 100%), url('/backgrounds/booqly-landing-bg.jpg') right center / cover no-repeat; opacity: .88; pointer-events: none; }
+.booqly-premium-photo { background: linear-gradient(180deg, rgba(3,9,7,.18), rgba(3,9,7,.78)), url('/backgrounds/booqly-login-bg.jpg') center / cover no-repeat; }
+@media (max-width: 1023px) { .booqly-landing-hero::after { inset: 35% 0 0; opacity: .42; background: linear-gradient(180deg, var(--paper) 0%, rgba(5,9,7,.22) 55%, var(--paper) 100%), url('/backgrounds/booqly-landing-bg.jpg') center / cover no-repeat; } }
+
+/* ===== Refinamento visual final — Booqly ===== */
+.booqly-logo-light { display: block; }
+.booqly-logo-original { display: none; }
+[data-theme="branco"] .booqly-logo-light { display: none; }
+[data-theme="branco"] .booqly-logo-original { display: block; }
+
+.booqly-app {
+  background: var(--paper);
+}
+.booqly-app::before {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  top: 76px;
+  right: 0;
+  width: min(58vw, 900px);
+  height: calc(100vh - 76px);
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, var(--paper) 0%, rgba(5,9,7,.92) 25%, rgba(5,9,7,.58) 100%),
+    url('/backgrounds/booqly-app-bg.jpg') right top / cover no-repeat;
+  opacity: .42;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 34%, #000 100%);
+}
+.booqly-sidebar { background: rgba(5,12,9,.96); }
+.booqly-topbar { background: rgba(5,9,7,.88); }
+.booqly-content { position: relative; }
+
+.booqly-agenda-page { width: 100%; }
+.booqly-agenda-heading { padding-bottom: 2px; }
+.booqly-agenda-heading h1 { font-size: clamp(1.65rem, 2.4vw, 2.25rem); letter-spacing: -.035em; }
+.booqly-agenda-heading > div:first-child p { margin-top: .45rem; color: rgba(242,255,247,.52); }
+.booqly-view-toggle { background: rgba(255,255,255,.035); padding: 3px; box-shadow: 0 10px 28px rgba(0,0,0,.16); }
+.booqly-view-toggle button { border-radius: .65rem; padding: .55rem .85rem; transition: .18s ease; }
+.booqly-view-toggle button:not(.bg-brand):hover { background: rgba(255,255,255,.05); color: var(--ink-strong); }
+.booqly-agenda-tabs { padding-bottom: 0; }
+.booqly-agenda-tabs button { min-height: 42px; border-bottom-width: 2px; }
+.booqly-appointment-card {
+  background: linear-gradient(145deg, rgba(13,27,21,.90), rgba(8,17,13,.84));
+  box-shadow: 0 14px 36px rgba(0,0,0,.16);
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.booqly-appointment-card:hover { transform: translateY(-1px); border-color: rgba(25,245,138,.18); box-shadow: 0 18px 42px rgba(0,0,0,.24); }
+
+.booqly-landing-hero::after { display: none; }
+.booqly-hero-visual { isolation: isolate; }
+.booqly-hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 45%;
+  background: linear-gradient(0deg, rgba(3,9,7,.78), transparent);
+  pointer-events: none;
+}
+.booqly-hero-dashboard { animation: heroFloat 7s ease-in-out infinite; }
+@keyframes heroFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+.booqly-login { position: relative; }
+.booqly-login::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 20%, rgba(25,245,138,.07), transparent 30rem);
+}
+.booqly-login-card { min-width: 0; }
+.booqly-login-form { min-width: 0; }
+.booqly-login-form input:not([type="checkbox"]):not([type="radio"]) { min-height: 52px; max-width: 100%; width: 100%; font-size: 16px; }
+.booqly-login-form input[type="tel"],
+.booqly-login-form input[type="text"],
+.booqly-login-form input[type="password"] {
+  -webkit-user-select: text;
+  user-select: text;
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+.booqly-login-input {
+  -webkit-appearance: none;
+  appearance: none;
+  color: #f2fff7 !important;
+  caret-color: #19f58a;
+  -webkit-text-fill-color: #f2fff7;
+  touch-action: manipulation;
+}
+.booqly-login-input::placeholder { color: rgba(242,255,247,.30) !important; -webkit-text-fill-color: rgba(242,255,247,.30); }
+.booqly-login-input:focus { background: #0f1c17 !important; }
+.booqly-login-form button[type="submit"] { min-height: 54px; border-radius: .9rem; font-weight: 700; box-shadow: 0 12px 30px rgba(25,245,138,.12); }
+
+@media (max-width: 1023px) {
+  .booqly-app::before { top: 65px; width: 100%; height: 55vh; opacity: .12; mask-image: linear-gradient(180deg, #000, transparent); }
+}
+
+@media (max-width: 767px) {
+  .booqly-app::before { display: none; }
+  .booqly-content { padding-top: 1.25rem !important; }
+  .booqly-agenda-heading { flex-direction: column; align-items: stretch; }
+  .booqly-agenda-heading > div:last-child { width: 100%; align-items: stretch; }
+  .booqly-view-toggle { width: 100%; }
+  .booqly-view-toggle button { flex: 1; }
+  .booqly-agenda-tabs { overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; }
+  .booqly-agenda-tabs::-webkit-scrollbar { display: none; }
+  .booqly-agenda-tabs button { white-space: nowrap; }
+
+  .booqly-landing-hero { padding-top: 2.5rem; }
+  .booqly-hero-visual { min-height: 340px; border-radius: 24px; }
+  .booqly-hero-dashboard { animation: none; }
+
+  .booqly-login {
+    min-height: 100dvh;
+    background-position: center top;
+    background-attachment: scroll;
+  }
+  .booqly-login-shell {
+    min-height: 100dvh;
+    padding: 10px;
+    align-items: flex-start;
+  }
+  .booqly-login-card {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    border-color: rgba(255,255,255,.14);
+    background: rgba(4,12,9,.72);
+    border-radius: 20px;
+    backdrop-filter: blur(18px);
+  }
+  .booqly-login-form {
+    min-height: 0;
+    justify-content: flex-start;
+    padding: 24px 18px 28px;
+    border-radius: 20px;
+    background: rgba(7,17,13,.93);
+  }
+  .booqly-login-form > div { max-width: 430px; }
+  .booqly-login-form .mb-8 { margin-bottom: 1.25rem; }
+  .booqly-login-form h2 { font-size: 1.75rem; line-height: 1.1; }
+  .booqly-login-form p { max-width: 100%; }
+  .booqly-login-form form { gap: 0; }
+  .booqly-login-form input:not([type="checkbox"]):not([type="radio"]) { min-height: 50px; }
+  .booqly-login-form button[type="submit"] { min-height: 52px; }
+}
+
+@media (min-width: 768px) and (max-width: 1100px) {
+  .booqly-login-shell { padding-left: 18px; padding-right: 18px; }
+  .booqly-premium-photo { padding: 32px; }
+  .booqly-login-form { padding: 34px; }
+}
+
+
+
+/* ===== Responsividade global — Booqly =====
+   A interface nunca deve criar scroll horizontal ou campos comprimidos.
+   As páginas mantêm a mesma identidade visual, mas reorganizam conteúdo
+   para telas pequenas e para o teclado virtual do celular. */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img, video, canvas, svg {
+  max-width: 100%;
+}
+
+button, input, select, textarea {
+  max-width: 100%;
+}
+
+.booqly-app,
+.booqly-client,
+main,
+header,
+footer,
+section,
+article,
+form {
+  min-width: 0;
+}
+
+.booqly-content {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.booqly-content > div,
+.booqly-content > section {
+  width: 100%;
+  min-width: 0;
+}
+
+.booqly-content .overflow-x-auto {
+  width: 100%;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.booqly-content table {
+  border-collapse: collapse;
+  max-width: none;
+}
+
+.booqly-content pre,
+.booqly-content code {
+  max-width: 100%;
+}
+
+.booqly-content textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Barras de abas e controles horizontais podem rolar no celular em vez de
+   empurrar a página para fora da tela. */
+@media (max-width: 767px) {
+  .booqly-content .border-b.flex,
+  .booqly-content nav.flex {
+    max-width: 100%;
+  }
+
+  .booqly-content .border-b.flex {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+  }
+
+  .booqly-content .border-b.flex::-webkit-scrollbar {
+    display: none;
+  }
+
+  .booqly-content .border-b.flex > * {
+    flex: 0 0 auto;
+  }
+
+  .booqly-content input,
+  .booqly-content select,
+  .booqly-content textarea {
+    width: 100%;
+    min-width: 0;
+    font-size: 16px;
+  }
+
+  .booqly-content button,
+  .booqly-content a {
+    max-width: 100%;
+  }
+
+  /* Linhas de formulário que ainda usam flex: os campos passam a ficar
+     empilhados no celular e voltam a lado a lado a partir de 640px. */
+  .booqly-content form .flex.gap-3 > .flex-1,
+  .booqly-content form .flex.gap-3 > [class*="flex-"] {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Cards de conteúdo não podem ficar presos a uma largura mínima. */
+  .booqly-content [class*="w-["],
+  .booqly-content [class*="min-w-"] {
+    min-width: 0;
+  }
+
+  /* Área do cliente: navegação quebra com naturalidade em telas estreitas. */
+  .booqly-client-header nav {
+    min-width: 0;
+  }
+
+  /* Landing e páginas públicas */
+  .booqly-landing-hero,
+  .booqly-hero-visual {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .booqly-hero-dashboard {
+    max-width: 100%;
+  }
+
+  /* Evita que textos longos (e-mails, links, nomes de negócio) estourem. */
+  .booqly-content,
+  .booqly-content p,
+  .booqly-content h1,
+  .booqly-content h2,
+  .booqly-content h3,
+  .booqly-content h4,
+  .booqly-content span,
+  .booqly-client,
+  .booqly-client p,
+  .booqly-client span {
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+  .booqly-content form .flex.gap-3 {
+    flex-direction: row;
+  }
+
+  .booqly-content form .flex.gap-3 > .flex-1,
+  .booqly-content form .flex.gap-3 > [class*="flex-"] {
+    width: auto;
+  }
+}
+
+/* Login: uma coluna confortável em celular/tablet; duas colunas somente
+   quando existe espaço físico suficiente para o painel de imagem. */
+@media (max-width: 1023px) {
+  .booqly-login-shell {
+    width: 100%;
+    max-width: 680px;
+  }
+
+  .booqly-login-card {
+    width: 100%;
+  }
+
+  .booqly-login-form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 639px) {
+  .booqly-login-shell {
+    padding: 8px;
+  }
+
+  .booqly-login-card,
+  .booqly-login-form {
+    border-radius: 18px;
+  }
+
+  .booqly-login-form {
+    padding: 22px 16px 26px;
+  }
+
+  .booqly-login-form h2 {
+    font-size: 1.55rem;
+  }
+
+  .booqly-login-form input {
+    min-height: 50px;
+  }
+}
+
+/* ===== LANDING PAGE — referência visual aprovada ===== */
+.booqly-landing{background:radial-gradient(circle at 78% 4%,rgba(25,245,138,.18),transparent 28rem),linear-gradient(180deg,#03120d 0%,#02100b 48%,#02100b 100%);color:#f4fff8}
+.booqly-landing-header{background:rgba(2,12,8,.84);border-bottom:1px solid rgba(110,255,190,.13);backdrop-filter:blur(18px)}
+.booqly-header-link{position:relative;padding:27px 0;color:rgba(244,255,248,.82);transition:.2s}.booqly-header-link:hover{color:#19f58a}.booqly-header-link.is-active{color:#19f58a}.booqly-header-link.is-active:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:#19f58a;box-shadow:0 0 14px rgba(25,245,138,.7)}
+.booqly-header-cta,.booqly-green-btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;border-radius:999px;background:#19f58a;color:#02110b;font-weight:800;box-shadow:0 12px 30px rgba(25,245,138,.15);transition:transform .18s ease,box-shadow .18s ease}.booqly-header-cta{padding:.62rem 1.15rem;font-size:.78rem}.booqly-green-btn{padding:.72rem 1.15rem;font-size:.78rem}.booqly-header-cta:hover,.booqly-green-btn:hover{transform:translateY(-1px);box-shadow:0 16px 35px rgba(25,245,138,.23)}
+.booqly-home-hero{position:relative;overflow:hidden;background:radial-gradient(circle at 74% 35%,rgba(25,245,138,.18),transparent 22rem),linear-gradient(90deg,rgba(2,13,9,.99) 0%,rgba(2,13,9,.92) 42%,rgba(2,13,9,.34) 100%),url('/backgrounds/booqly-landing-bg.jpg') right center/cover no-repeat}
+.booqly-home-hero:after{content:"";position:absolute;inset:auto 0 0;height:90px;background:linear-gradient(180deg,transparent,#03100b);pointer-events:none}
+.booqly-pill{display:inline-flex;align-items:center;gap:.45rem;border:1px solid rgba(25,245,138,.45);border-radius:999px;padding:.34rem .7rem;color:#bfffe0;background:rgba(25,245,138,.055);font-size:.62rem;font-weight:700}.booqly-pill>span{width:7px;height:7px;border-radius:999px;background:#19f58a;box-shadow:0 0 12px rgba(25,245,138,.8)}
+.booqly-feature-mini{display:flex;min-width:0;align-items:center;gap:.55rem}.booqly-icon-box{display:flex;height:34px;width:34px;flex:none;align-items:center;justify-content:center;border:1px solid rgba(25,245,138,.35);border-radius:10px;background:rgba(25,245,138,.08);color:#19f58a;box-shadow:inset 0 0 16px rgba(25,245,138,.05)}
+.booqly-hero-device{position:absolute;right:-4%;top:50%;width:min(112%,610px);transform:translateY(-48%);filter:drop-shadow(0 35px 35px rgba(0,0,0,.45));animation:booqly-device-float 7s ease-in-out infinite}.booqly-section-label{display:flex;align-items:center;gap:.45rem;font-size:.78rem;font-weight:800}.booqly-section-label>span{width:3px;height:18px;border-radius:99px;background:#19f58a;box-shadow:0 0 12px rgba(25,245,138,.55)}
+.booqly-how{background:linear-gradient(180deg,rgba(2,15,10,.7),rgba(3,17,12,.95));}.booqly-step-card{border:1px solid rgba(25,245,138,.22);border-radius:13px;padding:.75rem;background:linear-gradient(145deg,rgba(8,31,22,.82),rgba(4,17,12,.76));box-shadow:inset 0 1px 0 rgba(255,255,255,.035);transition:.2s}.booqly-step-card:hover{transform:translateY(-2px);border-color:rgba(25,245,138,.5);box-shadow:0 15px 30px rgba(0,0,0,.18)}.booqly-step-icon{display:flex;width:38px;height:38px;align-items:center;justify-content:center;border:1px solid rgba(25,245,138,.4);border-radius:10px;background:rgba(25,245,138,.1);color:#19f58a}
+.booqly-rated-card{overflow:hidden;border:1px solid rgba(25,245,138,.22);border-radius:13px;background:linear-gradient(145deg,rgba(5,27,19,.9),rgba(3,16,11,.94));transition:.2s;box-shadow:0 10px 28px rgba(0,0,0,.13)}.booqly-rated-card:hover{transform:translateY(-2px);border-color:rgba(25,245,138,.52)}.booqly-rated-photo{height:92px;background:linear-gradient(135deg,#0a2418,#06130e);background-position:center;background-size:cover;display:flex;align-items:center;justify-content:center;color:#19f58a;font-size:2rem;font-weight:800}.booqly-rated-photo:has(span){background-image:radial-gradient(circle at 70% 30%,rgba(25,245,138,.2),transparent 40%),linear-gradient(135deg,#0a2418,#06130e)}
+.booqly-pro-section{border-top:1px solid rgba(25,245,138,.1);border-bottom:1px solid rgba(25,245,138,.1);background:radial-gradient(circle at 0 50%,rgba(25,245,138,.09),transparent 25rem),linear-gradient(90deg,rgba(3,18,12,.95),rgba(2,14,10,.88))}.booqly-feature-visual{overflow:hidden;border:1px solid rgba(25,245,138,.18);border-radius:15px;background:#04130d;box-shadow:0 25px 50px rgba(0,0,0,.3)}.booqly-feature-visual img{display:block;width:100%;height:225px;object-fit:cover;object-position:center}
+.booqly-testimonial{border:1px solid rgba(25,245,138,.22);border-radius:13px;background:rgba(5,27,19,.74);padding:14px;box-shadow:0 12px 30px rgba(0,0,0,.12)}.booqly-avatar{display:flex;width:37px;height:37px;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(145deg,#19f58a,#087a4b);color:#02110b;font-size:.72rem;font-weight:900}
+.booqly-faq{background:radial-gradient(circle at 10% 100%,rgba(25,245,138,.11),transparent 25rem),#03110c}.booqly-faq-item{border:1px solid rgba(25,245,138,.18);border-radius:9px;background:rgba(3,22,15,.75);padding:0 .8rem}.booqly-faq-item+ .booqly-faq-item{margin-top:.45rem}.booqly-faq-item summary{display:flex;cursor:pointer;list-style:none;align-items:center;justify-content:space-between;padding:.65rem 0;font-size:.68rem;color:rgba(244,255,248,.84)}.booqly-faq-item summary::-webkit-details-marker{display:none}.booqly-faq-item summary span{font-size:1.1rem;color:rgba(244,255,248,.55);transition:.2s}.booqly-faq-item[open] summary span{transform:rotate(90deg);color:#19f58a}.booqly-faq-item p{padding:0 0 .75rem;color:rgba(244,255,248,.52);font-size:.68rem;line-height:1.5}
+.booqly-footer{border-top:1px solid rgba(25,245,138,.12);background:#02100b}.booqly-float-help{position:fixed;right:20px;bottom:20px;z-index:50;display:flex;width:46px;height:46px;align-items:center;justify-content:center;border-radius:50%;background:#19f58a;color:#02110b;box-shadow:0 12px 30px rgba(25,245,138,.28);transition:.2s}.booqly-float-help:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(25,245,138,.38)}
+@keyframes booqly-device-float{0%,100%{transform:translateY(-48%)}50%{transform:translateY(calc(-48% - 7px))}}
+@media (max-width:767px){.booqly-header-link{padding:18px 0}.booqly-home-hero{background:linear-gradient(180deg,rgba(2,13,9,.96),rgba(2,13,9,.91)),url('/backgrounds/booqly-landing-bg.jpg') center/cover}.booqly-hero-device{position:relative;right:auto;top:auto;width:125%;max-width:none;margin-left:-13%;transform:none;animation:none}.booqly-feature-visual img{height:200px}.booqly-float-help{right:14px;bottom:14px}}
+@media (min-width:768px) and (max-width:1023px){.booqly-hero-device{right:-12%;width:90%}}
+
+/* Correção responsiva: login e área do cliente */
+.booqly-login-form input[type="checkbox"],.booqly-login-form input[type="radio"]{width:1rem!important;height:1rem!important;min-width:1rem!important;min-height:1rem!important;flex:0 0 1rem!important;padding:0!important}
+.booqly-login-form label,.booqly-login-form label>span,.booqly-client-header-inner,.booqly-client-nav,.booqly-client-main{min-width:0}
+.booqly-client-main{width:100%}
+@media(max-width:767px){
+.booqly-login-shell{max-width:100%;padding:10px 12px 24px}.booqly-login-card{overflow:hidden}.booqly-login-form{padding:22px 20px 26px}
+.booqly-login-form>div,.booqly-login-form form,.booqly-login-form form>div,.booqly-login-form form>label{width:100%;max-width:100%;min-width:0}
+.booqly-client-header-inner{display:grid!important;grid-template-columns:auto 1fr;align-items:center;gap:.75rem 1rem;padding:.8rem 1rem!important}
+.booqly-client-header-inner>a img{height:1.8rem;width:auto}
+.booqly-client-nav{display:flex!important;width:100%;max-width:100%;justify-content:flex-end;gap:.8rem!important;overflow-x:auto;overflow-y:hidden;flex-wrap:nowrap!important;white-space:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.booqly-client-nav::-webkit-scrollbar{display:none}.booqly-client-nav>*{flex:0 0 auto;font-size:.82rem}
+.booqly-client-main{padding:1.5rem 1rem 2.5rem!important}.booqly-client-main>*{max-width:100%;min-width:0}
+}
+@media(max-width:420px){
+.booqly-login-shell{padding-inline:8px}.booqly-login-form{padding-inline:16px}
+.booqly-client-header-inner{grid-template-columns:1fr;gap:.65rem}.booqly-client-header-inner>a{justify-self:start}.booqly-client-nav{justify-content:flex-start}
+}
+
+/* Configurações do painel — contenção para telas pequenas */
+@media (max-width: 640px) {
+  main input, main select, main textarea, main button {
+    max-width: 100%;
+  }
+  main label, main section, main form {
+    min-width: 0;
+  }
+}
+
+/* ===== RESPONSIVIDADE GLOBAL BOOQLY — TODAS AS ÁREAS ===== */
+html,body{max-width:100%;overflow-x:clip} img,video,canvas,svg{max-width:100%}
+.booqly-app,.booqly-content,.booqly-client,.booqly-client-main,main{min-width:0}
+.booqly-content>*,.booqly-client-main>*{min-width:0;max-width:100%}.booqly-content table{width:100%}
+@media(max-width:767px){
+.booqly-app,.booqly-app>div,.booqly-content,.booqly-content>*,.booqly-client,.booqly-client-main,.booqly-client-main>*{width:100%;min-width:0;max-width:100%}
+.booqly-content{overflow-x:clip;padding-left:1rem!important;padding-right:1rem!important}
+.booqly-content input:not([type="checkbox"]):not([type="radio"]),.booqly-content select,.booqly-content textarea,.booqly-client-main input:not([type="checkbox"]):not([type="radio"]),.booqly-client-main select,.booqly-client-main textarea{width:100%;min-width:0;max-width:100%;font-size:16px}
+.booqly-content input[type="checkbox"],.booqly-content input[type="radio"],.booqly-client-main input[type="checkbox"],.booqly-client-main input[type="radio"]{width:1rem!important;height:1rem!important;min-width:1rem!important;min-height:1rem!important;flex:0 0 1rem}
+.booqly-content h1,.booqly-content h2,.booqly-content h3,.booqly-content p,.booqly-content span,.booqly-content a,.booqly-client-main h1,.booqly-client-main h2,.booqly-client-main h3,.booqly-client-main p,.booqly-client-main span,.booqly-client-main a{overflow-wrap:anywhere}
+.booqly-content .border-b.flex,.booqly-client-main .border-b.flex{max-width:100%;overflow-x:auto;overflow-y:hidden;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.booqly-content .border-b.flex::-webkit-scrollbar,.booqly-client-main .border-b.flex::-webkit-scrollbar{display:none}
+.booqly-content .border-b.flex>*,.booqly-client-main .border-b.flex>*{flex:0 0 auto;white-space:nowrap}
+.booqly-content .overflow-x-auto,.booqly-client-main .overflow-x-auto{width:100%;max-width:calc(100vw - 2rem);-webkit-overflow-scrolling:touch}
+[class*="fixed"][class*="inset-0"]{max-width:100vw}}
+@media(max-width:479px){.booqly-content{padding-left:.75rem!important;padding-right:.75rem!important}.booqly-content .overflow-x-auto,.booqly-client-main .overflow-x-auto{max-width:calc(100vw - 1.5rem)}.booqly-content h1,.booqly-client-main h1{font-size:1.5rem;line-height:1.2}}
+.booqly-colaborador-page{width:100%;min-width:0}
+@media(max-width:639px){.booqly-colaborador-page{padding:1.25rem 1rem 2rem!important}.booqly-colaborador-heading{flex-direction:column;align-items:stretch!important}.booqly-colaborador-heading>button,.booqly-colaborador-heading>a{align-self:flex-start}}

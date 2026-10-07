@@ -1,0 +1,6 @@
+{
+  "crons": [
+    { "path": "/api/cron/processar-saques", "schedule": "0 6 * * *" },
+    { "path": "/api/cron/lembretes-automaticos", "schedule": "0 9 * * *" }
+  ]
+}
